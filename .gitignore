@@ -2,6 +2,9 @@
 .idea
 target
 
+# Project specific files
+*.iml
+
 # Compiled class file
 *.class
 
