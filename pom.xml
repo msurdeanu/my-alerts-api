@@ -8,7 +8,21 @@
     <artifactId>my-alerts-api</artifactId>
     <version>0.9.0-SNAPSHOT</version>
 
+    <scm>
+        <developerConnection>scm:git:https://github.com/msurdeanu/my-alerts-api.git</developerConnection>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>MyAlerts API Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/msurdeanu/my-alerts-api</url>
+        </repository>
+    </distributionManagement>
+
     <properties>
+        <project.scm.id>github</project.scm.id>
+
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
@@ -39,24 +53,5 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>github</id>
-            <activation>
-                <property>
-                    <name>useGitHubPackages</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <distributionManagement>
-                <repository>
-                    <id>github</id>
-                    <name>MyAlerts API Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/msurdeanu/my-alerts-api</url>
-                </repository>
-            </distributionManagement>
-        </profile>
-    </profiles>
 
 </project>
