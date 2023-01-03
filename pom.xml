@@ -4,7 +4,7 @@
 
     <groupId>org.myalerts</groupId>
     <artifactId>my-alerts-api</artifactId>
-    <version>0.9.1-SNAPSHOT</version>
+    <version>0.9.0-SNAPSHOT</version>
 
     <scm>
         <connection>scm:git:https://github.com/msurdeanu/my-alerts-api.git</connection>
@@ -37,6 +37,13 @@
             <groupId>org.pf4j</groupId>
             <artifactId>pf4j-spring</artifactId>
             <version>${pf4j-spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>3.0.13</version>
             <scope>provided</scope>
         </dependency>
 

@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.Instant;
+import java.util.Set;
 
 import static java.util.Optional.ofNullable;
 
@@ -13,14 +14,37 @@ import static java.util.Optional.ofNullable;
  */
 @Builder
 @Getter
-public class TestScenarioRun {
+public final class TestScenarioRun {
 
+    /**
+     * Represents current test scenario id.
+     */
     private Integer scenarioId;
 
+    /**
+     * Represents current scenario name for this run.
+     */
+    private String scenarioName;
+
+    /**
+     * Represents current scenario tags for this run.
+     */
+    private Set<String> scenarioTags;
+
+    /**
+     * Number of millis spent during test scenario execution phase.
+     */
     private long duration;
 
+    /**
+     * In case of failure, represents the root cause of the failure.
+     * In case of no failure, this field will have a null value.
+     */
     private String cause;
 
+    /**
+     * Timestamp (UTC format) for run creation.
+     */
     private Instant created;
 
     public static class TestScenarioRunBuilder {

@@ -11,15 +11,11 @@ import lombok.Getter;
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter
-public final class StatisticsItem {
+public class TestScenarioRunProperty {
 
     @EqualsAndHashCode.Include
     private String name;
 
-    private String icon;
-
     private Object value;
-
-    private String description;
 
 }

@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Builder
 @Getter
-public class StatisticsGroup {
+public final class StatisticsGroup {
 
     private StatisticsItem root;
 
