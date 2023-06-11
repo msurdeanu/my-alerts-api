@@ -4,7 +4,7 @@
 
     <groupId>org.myalerts</groupId>
     <artifactId>my-alerts-api</artifactId>
-    <version>0.9.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <scm>
         <connection>scm:git:https://github.com/msurdeanu/my-alerts-api.git</connection>
@@ -24,10 +24,11 @@
     <properties>
         <project.scm.id>github</project.scm.id>
 
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
 
         <pf4j-spring.version>0.8.0</pf4j-spring.version>
+        <groovy.version>3.0.13</groovy.version>
         <lombok.version>1.18.22</lombok.version>
         <jool.version>0.9.14</jool.version>
     </properties>
@@ -43,7 +44,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
-            <version>3.0.13</version>
+            <version>${groovy.version}</version>
             <scope>provided</scope>
         </dependency>
 
