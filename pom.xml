@@ -4,13 +4,13 @@
 
     <groupId>org.myalerts</groupId>
     <artifactId>my-alerts-api</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <scm>
         <connection>scm:git:https://github.com/msurdeanu/my-alerts-api.git</connection>
         <url>https://github.com/msurdeanu/my-alerts-api</url>
         <developerConnection>scm:git:https://github.com/msurdeanu/my-alerts-api.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v1.0.0</tag>
     </scm>
 
     <distributionManagement>
