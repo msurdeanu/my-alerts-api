@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import java.util.function.Supplier;
+
 /**
  * @author Mihai Surdeanu
  * @since 1.0.0
@@ -11,11 +13,13 @@ import lombok.Getter;
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter
-public class TestScenarioRunProperty {
+public class TestScenarioRunHelper {
 
     @EqualsAndHashCode.Include
     private String name;
 
-    private Object value;
+    private String descriptionKey;
+
+    private Supplier<Helper> helperSupplier;
 
 }

@@ -22,12 +22,12 @@ public final class TestScenarioRun {
     private Integer scenarioId;
 
     /**
-     * Represents current scenario name for this run.
+     * Represents current test scenario name for this run.
      */
     private String scenarioName;
 
     /**
-     * Represents current scenario tags for this run.
+     * Represents current test scenario tags for this run.
      */
     private Set<String> scenarioTags;
 

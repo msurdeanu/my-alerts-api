@@ -1,9 +1,9 @@
 package org.myalerts.provider;
 
-import org.myalerts.domain.TestScenarioRunProperty;
+import org.myalerts.domain.TestScenarioRunHelper;
 import org.pf4j.ExtensionPoint;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * @author Mihai Surdeanu
@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface HelpersProvider extends ExtensionPoint {
 
-    List<TestScenarioRunProperty> getTestScenarioRunProperties();
+    Stream<TestScenarioRunHelper> getTestScenarioRunHelpersAsStream();
 
 }

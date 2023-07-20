@@ -28,8 +28,7 @@
         <maven.compiler.target>17</maven.compiler.target>
 
         <pf4j-spring.version>0.8.0</pf4j-spring.version>
-        <groovy.version>3.0.13</groovy.version>
-        <lombok.version>1.18.22</lombok.version>
+        <lombok.version>1.18.24</lombok.version>
         <jool.version>0.9.14</jool.version>
     </properties>
 
@@ -38,13 +37,6 @@
             <groupId>org.pf4j</groupId>
             <artifactId>pf4j-spring</artifactId>
             <version>${pf4j-spring.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <version>${groovy.version}</version>
             <scope>provided</scope>
         </dependency>
 
