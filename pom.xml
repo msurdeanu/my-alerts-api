@@ -24,12 +24,12 @@
     <properties>
         <project.scm.id>github</project.scm.id>
 
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
-        <pf4j-spring.version>0.8.0</pf4j-spring.version>
-        <lombok.version>1.18.24</lombok.version>
-        <jool.version>0.9.14</jool.version>
+        <pf4j-spring.version>0.9.0</pf4j-spring.version>
+        <lombok.version>1.18.36</lombok.version>
+        <jool.version>0.9.15</jool.version>
     </properties>
 
     <dependencies>
