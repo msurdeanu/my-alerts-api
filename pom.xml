@@ -28,7 +28,7 @@
         <maven.compiler.target>21</maven.compiler.target>
 
         <pf4j-spring.version>0.9.0</pf4j-spring.version>
-        <lombok.version>1.18.36</lombok.version>
+        <lombok.version>1.18.38</lombok.version>
         <jool.version>0.9.15</jool.version>
     </properties>
 
