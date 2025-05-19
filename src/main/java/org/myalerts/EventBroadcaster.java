@@ -1,15 +1,17 @@
 package org.myalerts;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.myalerts.domain.event.Event;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
 import static java.util.Optional.ofNullable;
@@ -20,39 +22,52 @@ import static java.util.Optional.ofNullable;
  */
 @Slf4j
 @Component
-@RequiredArgsConstructor
 public final class EventBroadcaster {
 
     private final Map<Class<? extends Event>, List<Consumer<Event>>> consumersMap = new HashMap<>();
 
-    private final ThreadPoolExecutor threadPoolExecutor;
+    private final Lock lock = new ReentrantLock();
 
-    /**
-     * Provides ability to broadcast an event to all consumers registered as listeners.
-     *
-     * @param event: the event consumed by listeners
-     */
-    public synchronized void broadcast(final Event event) {
-        ofNullable(consumersMap.get(event.getClass()))
-            .orElse(List.of())
-            .forEach(consumer -> threadPoolExecutor.execute(() -> consumer.accept(event)));
+    private final ExecutorService executorService;
+
+    public EventBroadcaster(@Qualifier("alert-pool") ExecutorService executorService) {
+        this.executorService = executorService;
     }
 
-    /**
-     * Provides ability to register a consumer for consuming different type of events.
-     *
-     * @param consumer: consumer to be registered
-     * @param acceptedEvent: class of events accepted to be received by the new listener
-     */
-    public synchronized void register(final Consumer<Event> consumer,
-                                      final Class<? extends Event> acceptedEvent) {
+    public void broadcast(Event event) {
+        broadcast(event, 0);
+    }
+
+    public void broadcast(Event event, long millisDelay) {
+        lock.lock();
+        try {
+            ofNullable(consumersMap.get(event.getClass()))
+                .orElse(List.of())
+                .forEach(consumer -> executorService.execute(() -> {
+                    if (millisDelay > 0) {
+                        safeSleep(millisDelay);
+                    }
+                    consumer.accept(event);
+                }));
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void register(Consumer<Event> consumer, Class<? extends Event> acceptedEvent) {
         ofNullable(consumersMap.get(acceptedEvent)).ifPresentOrElse(
             consumers -> consumers.add(consumer),
             () -> consumersMap.put(acceptedEvent, new ArrayList<>(List.of(consumer)))
         );
 
-        if (log.isDebugEnabled()) {
-            log.debug("A new broadcast consumer is registered for event type '{}'.", acceptedEvent.getName());
+        log.debug("A new broadcast consumer is registered for event type '{}'.", acceptedEvent.getName());
+    }
+
+    private void safeSleep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 
